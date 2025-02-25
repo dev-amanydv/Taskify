@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Gender from "./Gender";
-import { NavLink } from "react-router-dom";
+import { useNavigate, NavLink } from "react-router-dom";
 import Footer from "./Footer";
 import useSignup from "../hooks/useSignup";
 
@@ -17,11 +17,16 @@ function Signup() {
   const handleCheckboxChange = (gender)=> {
     setInputs({...inputs,gender})
   }
-
+  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
     console.log("Submitted")
-    await signup(inputs);
+    try {
+      await signup(inputs);
+      navigate("/dashboard");
+  } catch (error) {
+      console.error("Signup failed:", error);
+  }
   }
 
 

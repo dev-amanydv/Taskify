@@ -12,6 +12,10 @@ mongoose
 
 // Admin schema
 const adminSchema = new mongoose.Schema({
+  fullName: {
+    type: String,
+    required: true
+  },
   username: {
     type: String,
     required: true,
@@ -36,6 +40,10 @@ const adminSchema = new mongoose.Schema({
 
 // User schema
 const userSchema = new mongoose.Schema({
+  fullName: {
+    type: String,
+    required: true
+  },
   username: {
     type: String,
     required: true,

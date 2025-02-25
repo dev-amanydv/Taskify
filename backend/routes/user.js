@@ -25,14 +25,15 @@ router.post('/signup',async (req, res) => {
        
         if (userExists) {
             return res.status(400).json({
-                   msg: "User already exists!"
+                   msg: "User already exists!",
                })
            }
 
-        const boyProfilePic = `https://avatar.iran.liara.run/public/boy/username?username=${username}`;
-        const girlProfilePic = `https://avatar.iran.liara.run/public/girl/username?username=${username}`;
+        const boyProfilePic = `https://avatar.iran.liara.run/public/boy?username=${username}`;
+        const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`;
 
         const newUser = new User({
+            fullName,
             username,
             password,
             gender,

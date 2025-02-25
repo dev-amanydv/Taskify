@@ -11,8 +11,8 @@ const useSignup = () => {
         console.log({fullName, username, password, confirmPassword, gender })
         const success = handleInputErrors({ fullName, username, password, confirmPassword, gender });
         if (!success)
-            console.log("Validation failded")
-            return;
+            {console.log("Validation failded")
+            return;}
 
         setLoading(true);
         try {
@@ -26,14 +26,16 @@ const useSignup = () => {
 
             const data = await res.json();
 
-            if (!res.ok) {  // ✅ Check HTTP errors
-                throw new Error(data.error || "Signup failed. Please try again.");
+            if (!res.ok) {
+                console.log("Server response:", data); // Debugging
+                throw new Error(data?.error || "Signup failed. Please try again.");
             }
 
             // Store user session
             localStorage.setItem("taskify", JSON.stringify(data));
             setAuthUser(data);
             console.log("Signup successful:", data);
+
 
         } catch (error) {
             toast.error(error.message);
@@ -51,14 +53,18 @@ export default useSignup;
 function handleInputErrors({ fullName, username, password, confirmPassword, gender }) {
     if (!fullName || !username || !password || !confirmPassword || !gender) {
         toast.error("Please fill in all the fields");
+        console.log("Please fill in all the fields")
         return false;
     }
     if (password !== confirmPassword) {
         toast.error("Passwords didn't match");
+        console.log("Passwords didn't match")
         return false;
     }
     if (password.length < 6) {
         toast.error("Password must be at least 6 characters long");
+        console.log("Password must be at least 6 characters long")
+
         return false;
     }
     return true;
