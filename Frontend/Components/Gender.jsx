@@ -1,15 +1,20 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-function Gender() {
+const Gender = ({selectedGender, onCheckboxChange}) => {
+  
   return (
     <div className='flex justify-around mt-2 '>
-        <div className='flex gap-5'>
+        <div className={`flex gap-5 `} >
             <h2>Male</h2>
-            <input type="checkbox" defaultChecked className="checkbox" />
+            <input type="checkbox" checked={selectedGender == "male"} onChange={() => {
+              onCheckboxChange("male")
+            }} className="checkbox" />
         </div>
-        <div className='flex gap-5'>
+        <div className={`flex gap-5`}>
             <h2>Female</h2>
-            <input type="checkbox" defaultChecked className="checkbox" />
+            <input type="checkbox" checked={selectedGender == "female"} onChange={()=> {
+              onCheckboxChange("female")
+            }} className="checkbox" />
         </div>
       
     </div>
