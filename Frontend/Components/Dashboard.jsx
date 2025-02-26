@@ -1,6 +1,7 @@
 import React from 'react'
 import { NavLink } from 'react-router-dom'
 import { useAuthContext } from '../context/AuthContext'
+import Logout from './Logout';
 
 function Dashboard() {
     const {authUser} = useAuthContext();
@@ -15,17 +16,14 @@ function Dashboard() {
                 <div className="slogan">Get Things Done, Stress-Free.</div>
               </div>
             </div>
-            <div className="nav2">
-                <ul>
-                  <li><NavLink className="nav-items" to="/" >Home</NavLink></li>
-                  <li><NavLink className="nav-items" to="/about">About</NavLink></li>
-                  <li><NavLink className="nav-items" to="/tasks">Tasks</NavLink></li>
-                </ul>
+            <div className="nav2 text-lg">
+                
                 
                 {authUser ? (
                 <div className="profile flex items-center gap-2">
                     <img className='w-10 h-10' src={`${authUser.profilePic}`} alt="" />
-                    <span> {authUser.fullName}</span>
+                    <span className='mr-3'> {authUser.fullName}</span>
+                    <Logout/>
                 </div>
             ) : (
                 <NavLink to="/login">Login</NavLink>
