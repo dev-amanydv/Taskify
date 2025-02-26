@@ -1,9 +1,12 @@
 import React, { useState } from "react";
 import { useAuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
-const useLogout = async () => {
+
+const useLogout =  () => {
     const [loading, setLoading ] = useState(false);
+    const navigate = useNavigate();
     const {setAuthUser} = useAuthContext();
     const logout = async ()=> {
         setLoading(true);
@@ -22,6 +25,8 @@ const useLogout = async () => {
             localStorage.removeItem("taskify");
             setAuthUser(null);
             console.log("logout clicked")
+            navigate('/login');
+            console.log("navigating to login")
             
         } catch (error) {
             toast.error(error.message)
