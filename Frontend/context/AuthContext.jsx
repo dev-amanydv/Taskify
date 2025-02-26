@@ -1,4 +1,5 @@
 import {createContext, useContext, useState, useEffect} from 'react'
+import { useNavigate } from 'react-router-dom';
 
 
 
@@ -14,6 +15,9 @@ export const AuthContextProvider = ({children}) => {
     useEffect(()=> {
         if (authUser){
             localStorage.setItem("taskify", JSON.stringify(authUser))
+            console.log("Data in auth user from authContext.jsx: ", authUser); 
+            console.log(authUser);
+
         } else {
             localStorage.removeItem("taskify")
         }

@@ -25,7 +25,6 @@ const useLogout =  () => {
             localStorage.removeItem("taskify");
             setAuthUser(null);
             console.log("logout clicked")
-            navigate('/login');
             console.log("navigating to login")
             
         } catch (error) {

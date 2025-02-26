@@ -4,8 +4,10 @@ import Gender from "./Gender";
 import { useNavigate, NavLink } from "react-router-dom";
 import Footer from "./Footer";
 import useSignup from "../hooks/useSignup";
+import { useAuthContext } from "../context/AuthContext";
 
 function Signup() {
+  const {authUser, setAuthUser} = useAuthContext();
   const [inputs, setInputs] = useState({
     fullName: "",
     username: "",
@@ -23,7 +25,7 @@ function Signup() {
     console.log("Submitted")
     try {
       await signup(inputs);
-      navigate("/dashboard");
+      console.log("data in auth user ",authUser)
   } catch (error) {
       console.error("Signup failed:", error);
   }

@@ -4,7 +4,7 @@ import { useAuthContext } from "../context/AuthContext";
 
 const useSignup = () => {
     const [loading, setLoading] = useState(false);
-    const { setAuthUser } = useAuthContext();
+    const { setAuthUser, authUser } = useAuthContext();
 
     const signup = async ({ fullName, username, password, confirmPassword, gender }) => {
         console.log("Signup function called")
@@ -25,6 +25,7 @@ const useSignup = () => {
             });
 
             const data = await res.json();
+            console.log("RAW data:", data)
 
             if (!res.ok) {
                 console.log("Server response:", data); // Debugging
@@ -33,8 +34,11 @@ const useSignup = () => {
 
             // Store user session
             localStorage.setItem("taskify", JSON.stringify(data));
-            setAuthUser(data);
-            console.log("Signup successful:", data);
+            console.log("Data in auth User from useSignup before updating : ",authUser);
+
+         setAuthUser(data);
+            console.log("Data in auth User from useSignup after updating : ",authUser);
+            console.log("data recieved from server from : ", data);
 
 
         } catch (error) {
