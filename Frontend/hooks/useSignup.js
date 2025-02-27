@@ -38,8 +38,6 @@ const useSignup = () => {
 
          setAuthUser(data);
             console.log("Data in auth User from useSignup after updating : ",authUser);
-            console.log("data recieved from server from : ", data);
-
 
         } catch (error) {
             toast.error(error.message);

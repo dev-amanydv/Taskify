@@ -22,10 +22,12 @@ function Signup() {
   const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted")
+    console.log("Submitted -from signup.jsx:")
     try {
       await signup(inputs);
-      console.log("data in auth user ",authUser)
+      console.log("data in auth user from signup.jsx just after calling signup: ",authUser);
+      console.log("Now navigating to dashboard")
+      navigate('/dashboard');
   } catch (error) {
       console.error("Signup failed:", error);
   }

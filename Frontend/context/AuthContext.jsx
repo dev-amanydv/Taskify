@@ -16,7 +16,7 @@ export const AuthContextProvider = ({children}) => {
         if (authUser){
             localStorage.setItem("taskify", JSON.stringify(authUser))
             console.log("Data in auth user from authContext.jsx: ", authUser); 
-            console.log(authUser);
+            
 
         } else {
             localStorage.removeItem("taskify")
