@@ -75,7 +75,7 @@ router.post('/login', async (req,res) => {
     })
     if (user){
         generateTokenAndSetCookie(user._id, res);
-        res.json({
+        res.status(201).json({
             id: user._id,
             fullName: user.fullName,
             username: user.username,

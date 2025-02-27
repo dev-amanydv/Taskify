@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Gender from "./Gender";
-import { useNavigate, NavLink } from "react-router-dom";
+import {  NavLink } from "react-router-dom";
 import Footer from "./Footer";
 import useSignup from "../hooks/useSignup";
 import { useAuthContext } from "../context/AuthContext";
 
 function Signup() {
-  const {authUser, setAuthUser} = useAuthContext();
   const [inputs, setInputs] = useState({
     fullName: "",
     username: "",
@@ -19,18 +18,10 @@ function Signup() {
   const handleCheckboxChange = (gender)=> {
     setInputs({...inputs,gender})
   }
-  const navigate = useNavigate();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Submitted -from signup.jsx:")
-    try {
-      await signup(inputs);
-      console.log("data in auth user from signup.jsx just after calling signup: ",authUser);
-      console.log("Now navigating to dashboard")
-      navigate('/dashboard');
-  } catch (error) {
-      console.error("Signup failed:", error);
-  }
+    await signup(inputs);
+
   }
 
 
