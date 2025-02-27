@@ -14,9 +14,7 @@ export const AuthContextProvider = ({children}) => {
 
     useEffect(()=> {
         if (authUser){
-            localStorage.setItem("taskify", JSON.stringify(authUser))
-            console.log("Data in auth user from authContext.jsx: ", authUser); 
-            
+            localStorage.setItem("taskify", JSON.stringify(authUser))            
 
         } else {
             localStorage.removeItem("taskify")

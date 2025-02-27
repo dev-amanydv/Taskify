@@ -21,11 +21,8 @@ const useLogout =  () => {
             if (data.error){
                 throw new Error(data.error)
             }
-            console.log("reached logout");
             localStorage.removeItem("taskify");
             setAuthUser(null);
-            console.log("logout clicked")
-            console.log("navigating to login")
             
         } catch (error) {
             toast.error(error.message)

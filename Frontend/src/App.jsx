@@ -1,7 +1,6 @@
 import React from "react";
 import { Navigate, Routes, Route} from "react-router-dom";
 import LandingHome from "../Components/LandingHome";
-import { AuthContextProvider } from "../context/AuthContext";
 import Login from "../Components/Login";
 import Signup from "../Components/Signup"
 import { useAuthContext } from "../context/AuthContext";
