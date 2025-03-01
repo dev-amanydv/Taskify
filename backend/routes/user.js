@@ -100,8 +100,8 @@ router.post('/logout', async (req,res) => {
             maxAge:0
         });
         res.status(200).json({
-            msg: "Logged out successfully"
-        })
+            msg: "Logged out successfully!"
+        })      
         
     } catch (error) {
         console.log("Error in admin logout route: ", error);
@@ -110,5 +110,16 @@ router.post('/logout', async (req,res) => {
         })
     }
 })
+router.post('/todo',userMiddleware, async (req,res) => {
+    try {
+        const { title,dsecription ,isCompleted } = req.body;
+        res.status(201).json({
+            msg: "Todo added successfully!"
+        })
 
+        
+    } catch (error) {
+        console.log("Error in todo route: ", error)
+    }
+})
 export default router
