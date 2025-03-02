@@ -28,6 +28,7 @@ async function userMiddleware(req, res, next) {
     }
 
     req.user = user;
+    req.headers["user-id"] = user._id.toString();
     next();
 
     

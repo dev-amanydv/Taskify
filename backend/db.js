@@ -74,6 +74,7 @@ const todoSchema = new mongoose.Schema({
     type: Boolean,
     default: false, 
   },
+  senderId: String
 },{timestamps: true});
 
 

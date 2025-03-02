@@ -112,12 +112,29 @@ router.post('/logout', async (req,res) => {
 })
 router.post('/todo',userMiddleware, async (req,res) => {
     try {
-        const { title,dsecription ,isCompleted } = req.body;
-        res.status(201).json({
-            msg: "Todo added successfully!"
-        })
+        const { title,description ,isCompleted } = req.body;
+        const senderId = req.headers["user-id"];
+        if (!senderId){
+            return res.status(401).json({
+                error: "User Id is required!"
+            })
+        }
+        const newTodo = new Todos({
+            title,
+            description,
+            senderId
+        });
+        if (newTodo){
+            await newTodo.save();
+            res.status(201).json({
+                msg: "Todo added successfully!"
+            })
+        } else {
+            res.status(400).json({
+                msg: "Invalid Todo Data"
+            })
+        }
 
-        
     } catch (error) {
         console.log("Error in todo route: ", error)
     }

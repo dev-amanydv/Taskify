@@ -157,7 +157,10 @@
   font-size: 50px;
   color: #928dab;
 }
-
+.todo-info{
+ color: black;
+ font-family: Outfit;
+}
 
 
 .response-box {
