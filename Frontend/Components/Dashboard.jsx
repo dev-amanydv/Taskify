@@ -59,7 +59,7 @@ function Dashboard() {
             <kbd className="kbd kbd-sm">K</kbd>
           </label>
         </div>
-        <div className=" input-todo text-2xl font-[Outfit] " >
+        <div className=" input-todo mt-5 text-2xl font-[Outfit] " >
             <span>Want to add a Todo? </span>
             <button className="">Add a Todo</button>
         </div>
