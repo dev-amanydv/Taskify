@@ -2,6 +2,7 @@ import React from "react";
 import { NavLink } from "react-router-dom";
 import { useAuthContext } from "../context/AuthContext";
 import Logout from "./Logout";
+import AddTodo from "./AddTodo";
 
 function Dashboard() {
   const { authUser } = useAuthContext();
@@ -59,9 +60,10 @@ function Dashboard() {
             <kbd className="kbd kbd-sm">K</kbd>
           </label>
         </div>
-        <div className=" input-todo mt-5 text-2xl font-[Outfit] " >
-            <span>Want to add a Todo? </span>
-            <button className="">Add a Todo</button>
+        <div className="add-todo flex gap-5 mt-5 text-2xl font-[Outfit] " >
+             <span>Want to add a Todo? </span>
+             <AddTodo/>
+              
         </div>
         <div className="todo-info grid grid-cols-2 my-10 gap-10 h-30 ">
           <div className="todos-created px-10 text-2xl font-semibold flex bg-green-200 items-center justify-center  shadow-2xl rounded-xl">

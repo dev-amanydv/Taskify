@@ -7,6 +7,8 @@ async function userMiddleware(req, res, next) {
 
   try {
     const token = req.cookies.jwt;
+    console.log("Cookies Received Type:", typeof req.cookies);  // ✅ Check type of req.cookies
+    console.log("Cookies Received:", JSON.stringify(req.cookies, null, 2));  // ✅ Print cookies clearly
 
     if (!token){
       return res.status(401).json({
@@ -33,7 +35,7 @@ async function userMiddleware(req, res, next) {
 
     
   } catch (error) {
-    console.log("Error in admin Middleware: ", error);
+    console.log("Error in User Middleware: ", error);
     res.status(500).json({
       msg: "Internal Server Error"
     })

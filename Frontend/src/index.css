@@ -7,7 +7,7 @@
 .boundary{
   width: 100%;
   height: 100vh; /* Adjust as needed */
-  background: url("./assets/F6B7B614-9AEC-4BB8-8E4B-E36A3173DEEA.jpeg"), url("image2.jpg"), url("image3.jpg");
+  background: url("./assets/F6B7B614-9AEC-4BB8-8E4B-E36A3173DEEA.jpeg"), url("./assets/9A138532-CA3B-48BD-8856-F6D798C9C368.jpeg"), url("./assets/E2DB8F5B-92B1-4A40-9D3E-9E384CAF5E83.jpeg");
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-position: top, center, bottom;
   background-size: contain, contain, contain;
@@ -234,4 +234,88 @@
 }
 .footer{
     
+}
+/* Modal Overlay (background) */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(20px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Modal Box */
+.modal-content {
+  background-color: rgba(6, 14, 28, 0.3);
+  backdrop-filter: blur(20px);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 10px 70px rgba(111, 109, 109, 0.5);
+  width: 500px;
+  text-align: center;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+/* Open Modal Button */
+.open-modal-btn {
+  background: black;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+/* Input Fields */
+.input-todo {
+  display: block;
+  width: 70%;
+  font-size: 18px;
+  margin: 10px 0;
+  padding: 7px;
+  background-color: #000000;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+/* Buttons */
+.save-btn {
+  background-color: rgb(0, 0, 0);
+  color: rgb(227, 219, 219);
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  box-shadow: 0 10px 70px rgba(233, 231, 231, 0.5);
+
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+.close-btn {
+  background-color: rgb(126, 126, 126);
+  color: rgb(0, 0, 0);
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-top: 10px;
+  border-radius: 4px;
+}
+
+/* Fade In Animation */
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: scale(0.9);
+  }
+  to {
+      opacity: 1;
+      transform: scale(1);
+  }
 }
