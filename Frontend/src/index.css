@@ -38,11 +38,16 @@
 }
 .logo {
   font-size: 30px;
+  color: rgb(140, 156, 183);
+
 }
 .logo-name {
   display: flex;
   flex-direction: column;
   margin-left: 10px;
+  color: rgb(140, 156, 183);
+
+
 }
 .name {
   font-family: Paytone One;

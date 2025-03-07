@@ -6,9 +6,11 @@ import {  NavLink } from "react-router-dom";
 import Footer from "./Footer";
 import useSignup from "../hooks/useSignup";
 import { useAuthContext } from "../context/AuthContext";
-import { auth, provider, signInWithPopup } from "../src/firebase/firebaseConfig";
+import { auth, provider} from "../src/firebase/firebaseConfig";
+import { FacebookAuthProvider, signInWithPopup } from "firebase/auth";
 import { useNavigate } from "react-router-dom";
 
+const facebookProvider = new FacebookAuthProvider();
 function Signup() {
   const [inputs, setInputs] = useState({
     fullName: "",
@@ -33,7 +35,42 @@ function Signup() {
   }
 
 
-  
+  const signInWithGoogle = async () => {
+    try {
+        const result = await signInWithPopup(auth, provider);
+
+        if (!result || !result.user) {
+            throw new Error("Google sign-in failed. No user data received.");
+        }
+
+        const user = {
+            uid: result.user.uid,
+            fullName: result.user.displayName,
+            email: result.user.email,
+            profilePic: result.user.photoURL,
+        };
+
+        // Store user in local storage
+        localStorage.setItem("taskify", JSON.stringify(user));
+
+        // Update AuthContext
+        setAuthUser(user);
+
+        toast.success("Logged in successfully!");
+        navigate("/dashboard");
+    } catch (error) {
+        console.error("Google Sign-In Error:", error);
+        toast.error(error.message || "Google sign-in failed. Please try again.");
+    }
+};
+const handleFacebookLogin = async () => {
+  try {
+    const result = await signInWithPopup(auth, facebookProvider);
+    console.log("User Info:", result.user);
+  } catch (error) {
+    console.error("Facebook Login Error:", error);
+  }
+};
 
 
   return (
@@ -121,7 +158,7 @@ function Signup() {
               </button>
               </div>
               <div className="login-with-email w-70 mt-2">
-              <button className="btn w-full bg-[#1A77F2] text-white border-[#005fd8]">
+              <button onClick={handleFacebookLogin} className="btn w-full bg-[#1A77F2] text-white border-[#005fd8]">
               <svg aria-label="Facebook logo" width="16" height="16" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path fill="white" d="M8 12h5V8c0-6 4-7 11-6v5c-4 0-5 0-5 3v2h5l-1 6h-4v12h-6V18H8z"></path></svg>
               Signin with Facebook
               </button>
