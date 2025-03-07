@@ -23,7 +23,7 @@ function Dashboard() {
             {authUser ? (
               <div className="profile flex items-center gap-2">
                 <img
-                  className="w-10 h-10"
+                  className="w-10 h-10 rounded-full"
                   src={`${authUser.profilePic || "https://avatar.iran.liara.run/public/boy?username=${username}"}`}
                   alt=""
                 />

@@ -33,34 +33,7 @@ function Signup() {
   }
 
 
-  const signInWithGoogle = async () => {
-    try {
-        const result = await signInWithPopup(auth, provider);
-
-        if (!result || !result.user) {
-            throw new Error("Google sign-in failed. No user data received.");
-        }
-
-        const user = {
-            uid: result.user.uid,
-            fullName: result.user.displayName,
-            email: result.user.email,
-            profilePic: result.user.photoURL,
-        };
-
-        // Store user in local storage
-        localStorage.setItem("taskify", JSON.stringify(user));
-
-        // Update AuthContext
-        setAuthUser(user);
-
-        toast.success("Logged in successfully!");
-        navigate("/dashboard");
-    } catch (error) {
-        console.error("Google Sign-In Error:", error);
-        toast.error(error.message || "Google sign-in failed. Please try again.");
-    }
-};
+  
 
 
   return (
@@ -129,6 +102,7 @@ function Signup() {
               <button type="submit"  disabled={loading} className="btn btn-primary w-full mt-3 scale-100 transition-transform duration-300 active:scale-95 hover:bg-blue-600">
                 {loading ? "Signing up..." : "Sign Up"}
               </button>
+              </form>
               <div className="flex items-center w-full mt-2">
                 <hr className="flex-grow border-t border-gray-300" />
                 <span className="mx-2 text-gray-400">or</span>
@@ -154,7 +128,7 @@ function Signup() {
               </div>
             
 
-            </form>
+            
             
           </div>
         </div>

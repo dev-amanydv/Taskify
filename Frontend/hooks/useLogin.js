@@ -1,10 +1,14 @@
 import { useState } from "react"
 import { useAuthContext } from "../context/AuthContext";
 import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
+
 
 const useLogin = () => {
     const [loading, setLoading] = useState(false);
     const { setAuthUser, authUser } = useAuthContext();
+    const navigate = useNavigate();
+
     
     const login = async (username,password) => {
         const success = handleInputErrors(username,password);
@@ -23,9 +27,13 @@ const useLogin = () => {
             const data = await res.json();
             if (data.msg){
                 throw new Error(data.msg)
-            }
+            };
+            
             localStorage.setItem("taskify", JSON.stringify(data));
-            setAuthUser(data);
+            if (res.ok) {
+                setAuthUser(data);
+                navigate('/dashboard');
+            }
         } catch (error) {
             toast.error(error.message);
         }finally {

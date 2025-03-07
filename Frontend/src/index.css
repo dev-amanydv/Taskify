@@ -274,11 +274,11 @@
 /* Input Fields */
 .input-todo {
   display: block;
-  width: 70%;
+  width: 100%;
   font-size: 18px;
   margin: 10px 0;
   padding: 7px;
-  background-color: #000000;
+  background-color: #2a2a37;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
