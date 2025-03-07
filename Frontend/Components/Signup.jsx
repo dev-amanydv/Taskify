@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import Navbar from "./Navbar";
 import Gender from "./Gender";
+import toast from "react-hot-toast";
 import {  NavLink } from "react-router-dom";
 import Footer from "./Footer";
 import useSignup from "../hooks/useSignup";
 import { useAuthContext } from "../context/AuthContext";
 import { auth, provider, signInWithPopup } from "../src/firebase/firebaseConfig";
+import { useNavigate } from "react-router-dom";
 
 function Signup() {
   const [inputs, setInputs] = useState({
@@ -17,6 +19,10 @@ function Signup() {
   });
 
   const {loading, signup} = useSignup();
+  const navigate = useNavigate();
+  const { setAuthUser, authUser } = useAuthContext();
+
+
   const handleCheckboxChange = (gender)=> {
     setInputs({...inputs,gender})
   }
@@ -26,14 +32,35 @@ function Signup() {
 
   }
 
+
   const signInWithGoogle = async () => {
     try {
-      const result = await signInWithPopup(auth, provider);
-      console.log("User Info:", result.user);
+        const result = await signInWithPopup(auth, provider);
+
+        if (!result || !result.user) {
+            throw new Error("Google sign-in failed. No user data received.");
+        }
+
+        const user = {
+            uid: result.user.uid,
+            fullName: result.user.displayName,
+            email: result.user.email,
+            profilePic: result.user.photoURL,
+        };
+
+        // Store user in local storage
+        localStorage.setItem("taskify", JSON.stringify(user));
+
+        // Update AuthContext
+        setAuthUser(user);
+
+        toast.success("Logged in successfully!");
+        navigate("/dashboard");
     } catch (error) {
-      console.error("Google Sign-In Error:", error);
+        console.error("Google Sign-In Error:", error);
+        toast.error(error.message || "Google sign-in failed. Please try again.");
     }
-  }
+};
 
 
   return (

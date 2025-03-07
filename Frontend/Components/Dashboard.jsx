@@ -24,7 +24,7 @@ function Dashboard() {
               <div className="profile flex items-center gap-2">
                 <img
                   className="w-10 h-10"
-                  src={`${authUser.profilePic}`}
+                  src={`${authUser.profilePic || "https://avatar.iran.liara.run/public/boy?username=${username}"}`}
                   alt=""
                 />
                 <span className="mr-3"> {authUser.fullName}</span>

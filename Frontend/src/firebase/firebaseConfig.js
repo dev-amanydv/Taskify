@@ -2,13 +2,13 @@ import { initializeApp } from "firebase/app";
 import { getAuth, GoogleAuthProvider, signInWithPopup } from "firebase/auth";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyC8EZx9qKmO_gzFKMuCT0_citAk1BsImrg",
-  authDomain: "taskify-e5c12.firebaseapp.com",
-  projectId: "taskify-e5c12",
-  storageBucket: "taskify-e5c12.firebasestorage.app",
-  messagingSenderId: "taskify-e5c12.firebasestorage.app",
-  appId: "1:1023248745864:web:6a91c36927fafd1d93e63d",
-  measurementId: "G-STJSBVM945"
+  apiKey: "AIzaSyCjmuRBoLwx49it3cfrv1LlbPMtABzhluw",
+  authDomain: "taskify-453001.firebaseapp.com",
+  projectId: "taskify-453001",
+  storageBucket: "taskify-453001.firebasestorage.app",
+  messagingSenderId: "312233782837",
+  appId: "1:312233782837:web:bfbe096a8bae499dd68b7c",
+  measurementId: "G-67L15GZVX7"
 };
 
 // Initialize Firebase

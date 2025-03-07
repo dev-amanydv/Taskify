@@ -34,9 +34,10 @@ const useSignup = () => {
 
          setAuthUser(data);
 
-         if (res.ok){
-            navigate('/dashboard')
-         }
+         if (res.ok) {
+            setAuthUser(data);
+            navigate('/dashboard');
+        }
 
         } catch (error) {
             toast.error(error.message);
