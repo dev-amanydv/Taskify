@@ -6,6 +6,7 @@ import { User, Admin } from '../db.js'
 async function userMiddleware(req, res, next) {
 
   try {
+    console.log("reached middleware...")
     const token = req.cookies.jwt;
     console.log("Cookies Received Type:", typeof req.cookies);  // ✅ Check type of req.cookies
     console.log("Cookies Received:", JSON.stringify(req.cookies, null, 2));  // ✅ Print cookies clearly

@@ -6,6 +6,7 @@ import Signup from "../Components/Signup"
 import { useAuthContext } from "../context/AuthContext";
 import Dashboard from "../Components/Dashboard";
 import { Toaster } from "react-hot-toast";
+import Tasks from "../Components/Tasks";
 
 const App = () => {
   const {authUser} = useAuthContext();
@@ -18,6 +19,7 @@ const App = () => {
               <Route path="/login" element={authUser ? <Navigate to="/dashboard"/> : <Login/>}/>
               <Route path="/signup" element={authUser ? <Navigate to="/dashboard"/> :<Signup/>}/>
               <Route path="/dashboard" element={authUser ? <Dashboard /> : <Navigate to="/login" />} />
+              <Route path="/tasks" element={authUser ? <Tasks/> : <Navigate to="/login" />}/>
             </Routes>
           
         </div>
