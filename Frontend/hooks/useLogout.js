@@ -6,9 +6,9 @@ import { useNavigate } from "react-router-dom";
 
 const useLogout =  () => {
     const [loading, setLoading ] = useState(false);
-    const navigate = useNavigate();
     const {setAuthUser} = useAuthContext();
     const logout = async ()=> {
+        console.log("Clicked logout: ")
         setLoading(true);
         try {
             const res = await fetch("http://localhost:3000/user/logout",{

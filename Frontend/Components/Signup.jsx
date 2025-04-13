@@ -14,7 +14,7 @@ const facebookProvider = new FacebookAuthProvider();
 function Signup() {
   const [inputs, setInputs] = useState({
     fullName: "",
-    username: "",
+    email: "",
     password: "",
     confirmPassword: "",
     gender: "",
@@ -94,14 +94,14 @@ const handleFacebookLogin = async () => {
               />
             </div>
             <div>
-              <h2 className="mt-5">Username</h2>
+              <h2 className="mt-5">Email</h2>
               <input
                 type="text"
-                value={inputs.username}
+                value={inputs.email}
                 onChange={(e) => {
-                  setInputs({...inputs, username: e.target.value})
+                  setInputs({...inputs, email: e.target.value})
                 }}
-                placeholder="Enter username"
+                placeholder="Enter email"
                 className="border-2 rounded-md p-1 w-full "
               />
             </div>

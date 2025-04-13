@@ -1,5 +1,4 @@
 import {createContext, useContext, useState, useEffect} from 'react'
-import { useNavigate } from 'react-router-dom';
 
 
 
@@ -15,7 +14,6 @@ export const AuthContextProvider = ({children}) => {
     useEffect(()=> {
         if (authUser){
             localStorage.setItem("taskify", JSON.stringify(authUser))            
-
         } else {
             localStorage.removeItem("taskify")
         }

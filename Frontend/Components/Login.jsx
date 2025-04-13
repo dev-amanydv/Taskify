@@ -6,12 +6,12 @@ import useLogin from "../hooks/useLogin";
 import { signInWithPopup } from "firebase/auth";
 
 function Login() {
-  const [username, setUsername ] = useState("");
+  const [email, setEmail ] = useState("");
   const [password, setPassword] = useState("");
   const {loading, login} = useLogin();
   const handleSubmit = async (e) => {
     e.preventDefault();
-    await login(username,password)
+    await login(email,password)
   }
   const signInWithGoogle = async () => {
     try {
@@ -51,12 +51,12 @@ function Login() {
             <h1 className="text-center text-3xl font-[Roboto] font-semibold ">Login Here!</h1>
             <form onSubmit={handleSubmit}>
             <div className="mt-5">
-              <h2 className="">Username</h2>
+              <h2 className="">Email</h2>
               <input
                 type="text" 
-                value={username} 
+                value={email} 
                 onChange={(e)=> {
-                  setUsername(e.target.value)
+                  setEmail(e.target.value)
                 }}
                 placeholder="Enter username"
                 className="border-2 rounded-md p-1 w-full "
@@ -79,7 +79,7 @@ function Login() {
                 Don't have an account?
               </p>
             </NavLink>
-            <button type="submit"  disabled={loading} className="border-2 p-1 text-lg text-white rounded-lg bg-gray-800  w-full mt-3 scale-100 transition-transform duration-300 active:scale-95 hover:bg-black">
+            <button type="submit" onClick={login}  disabled={loading} className="border-2 p-1 text-lg text-white rounded-lg bg-gray-800  w-full mt-3 scale-100 transition-transform duration-300 active:scale-95 hover:bg-black">
                 {loading ? "Logging In..." : "Login"}
               </button>  
               </form>

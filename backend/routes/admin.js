@@ -8,7 +8,7 @@ import generateTokenAndSetCookie from "../utils/generateTokenAndSetCookie.js";
 
 router.post("/signup", async (req, res) => {
   try {
-    const { fullName, username, password, gender, profilePic } = req.body;
+    const { fullName, email, password, gender, profilePic } = req.body;
 
     if (password !== 8107595366) {
       res.status(403).json({
@@ -18,7 +18,7 @@ router.post("/signup", async (req, res) => {
       return;
     }
     console.log("Checking if user exists...");
-    const userExists = await User.findOne({ username });
+    const userExists = await User.findOne({ email });
     console.log("User check completed:", userExists);
    
     if (userExists) {
@@ -31,7 +31,7 @@ router.post("/signup", async (req, res) => {
     const girlProfilePic = `https://avatar.iran.liara.run/public/girl/username?username=${username}`;
 
     const newUser = new Admin({
-      username,
+      email,
       password,
       gender,
       profilePic: gender == "male" ? boyProfilePic : girlProfilePic,
@@ -43,7 +43,7 @@ router.post("/signup", async (req, res) => {
       res.status(201).json({
         id: newUser._id,
         fullName: newUser.fullName,
-        username: newUser.username,
+        email: newUser.email,
         gender: newUser.gender,
         profilePic: newUser.profilePic,
       });
@@ -62,17 +62,17 @@ router.post("/signup", async (req, res) => {
 
 router.post("/login", async (req, res) => {
   try {
-    const { username, password } = req.body;
+    const { email, password } = req.body;
 
     const user = await Admin.findOne({
-      username,
+      email,
     });
     if (user) {
       generateTokenAndSetCookie(user._id, res);
       res.json({
         id: user._id,
         fullName: user.fullName,
-        username: user.username,
+        email: user.email,
         profilePic: user.profilePic,
       });
     } else {

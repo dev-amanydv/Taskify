@@ -7,10 +7,10 @@ async function userMiddleware(req, res, next) {
 
   try {
     console.log("reached middleware...")
-    const token = req.cookies.jwt;
-    console.log("Cookies Received Type:", typeof req.cookies);  // ✅ Check type of req.cookies
-    console.log("Cookies Received:", JSON.stringify(req.cookies, null, 2));  // ✅ Print cookies clearly
-
+    const token = req.headers["authorization"];
+    console.log("Cookies Received Type:", typeof req.cookies); 
+    console.log("Cookies Received:", JSON.stringify(req.cookies, null, 2));  
+    console.log("token: ",token)
     if (!token){
       return res.status(401).json({
         msg: "Unauthorized - No token provided"
@@ -32,9 +32,9 @@ async function userMiddleware(req, res, next) {
 
     req.user = user;
     req.headers["user-id"] = user._id.toString();
+    console.log("Passed imddleware: ")
     next();
 
-    
   } catch (error) {
     console.log("Error in User Middleware: ", error);
     res.status(500).json({

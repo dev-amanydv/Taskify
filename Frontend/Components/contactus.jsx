@@ -3,7 +3,7 @@ import React from 'react'
 function contactus() {
   return (
     <div>
-      Im from cintact
+      Im from contact
     </div>
   )
 }

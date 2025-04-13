@@ -16,7 +16,7 @@ const adminSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  username: {
+  email: {
     type: String,
     required: true,
     unique: true
@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  username: {
+  email: {
     type: String,
     required: true,
     unique: true
@@ -69,7 +69,6 @@ const userSchema = new mongoose.Schema({
 // Todo schema
 const todoSchema = new mongoose.Schema({
   title: String,
-  description: String,
   isCompleted: {
     type: Boolean,
     default: false, 
