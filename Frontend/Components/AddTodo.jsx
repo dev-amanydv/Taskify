@@ -12,10 +12,8 @@ export default function AddTodo() {
 
     return (
         <div>
-            {/* Button to Open Modal */}
             <button className="open-modal-btn btn" onClick={() => setShowModal(true)}>Add Todo</button>
 
-            {/* Modal (Only shows if showModal is true) */}
             {showModal && (
                 <div className="modal-overlay">
                     <div className="modal-content">

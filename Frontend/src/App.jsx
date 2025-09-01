@@ -7,12 +7,15 @@ import { useAuthContext } from "../context/AuthContext";
 import Dashboard from "../Components/Dashboard";
 import { Toaster } from "react-hot-toast";
 import Tasks from "../Components/Tasks";
+import './App.css';
+import './index.css';
+
 
 const App = () => {
   const {authUser} = useAuthContext();
   return (
     <><Toaster position="top-right" reverseOrder={false} />
-        <div className="boundary">  
+        <div className="">  
           
           <Routes>
               <Route path="/" element={authUser ? <Navigate to="/dashboard"/> :<LandingHome/>}/>

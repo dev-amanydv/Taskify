@@ -54,27 +54,17 @@ export default function TaskList({ refreshKey }) {
     
       const updatedStatus = !target.isCompleted;
     
-      // Update UI immediately
       setTasks((prev) =>
         prev.map((t) =>
           t._id === id ? { ...t, isCompleted: updatedStatus } : t
         )
       );
     
-      // Update in backend
       await updateTodo(id, target.title, updatedStatus);
     };
-    // if(loading){
-    //   return (
-    //     <div>
-    //       loading...
-    //     </div>
-    //   )
-    // }
 
   return (
-    <div className="w-full max-w-md mx-auto p-4">
-      {/* Filter Tabs */}
+    <div className="w-full max-w-2xl mx-auto p-4">
       <div className="flex space-x-2 mb-3">
         {["All", "Active", "Completed"].map((tab) => (
           <button
@@ -91,7 +81,6 @@ export default function TaskList({ refreshKey }) {
         ))}
       </div>
 
-      {/* Search Input */}
       <input
         type="text"
         placeholder="Search tasks..."
@@ -100,7 +89,6 @@ export default function TaskList({ refreshKey }) {
         onChange={(e) => setSearch(e.target.value)}
       />
 
-      {/* Task List */}
       <div className="space-y-2">
         {filteredTasks.map((task, idx) => (
           <div

@@ -18,7 +18,7 @@ function Login() {
         const result = await signInWithPopup(auth, provider);
 
         if (!result || !result.user) {
-            throw new Error("Google sign-in failed. No user data received.");
+         throw new Error("Google sign-in failed. No user data received.");
         }
 
         const user = {
@@ -28,10 +28,8 @@ function Login() {
             profilePic: result.user.photoURL,
         };
 
-        // Store user in local storage
         localStorage.setItem("taskify", JSON.stringify(user));
 
-        // Update AuthContext
         setAuthUser(user);
 
         toast.success("Logged in successfully!");

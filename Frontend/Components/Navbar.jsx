@@ -11,8 +11,8 @@ function Navbar() {
   const navigate = useNavigate();
   return (
     <div className=''>
-       <div className="">
-          <div className="nav p-2 flex bg-blue-100 shadow-md fixed w-full justify-between  border-b-sky-800">
+       <div className="fixed w-full  backdrop-blur-lg flex justify-center shadow-md bg-[#f7f7f7]/70">
+          <div className="nav p-2 flex  max-w-3xl w-full justify-between  border-b-sky-800">
             <div className="nav1 flex gap-1 items-center">
               <div className="logo text-2xl"><i className="fa-regular fa-square-check"></i></div>
               <div className="logo-name flex flex-col">

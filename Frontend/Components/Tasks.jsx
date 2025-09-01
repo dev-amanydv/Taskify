@@ -23,7 +23,7 @@ function Tasks() {
                         <input onChange={(e) =>{setNewTask(e.target.value)}} type="text" placeholder="Add a new task..." className="bg-sky-100 rounded-sm p-2 w-70/100 my-5 border-1 border-gray-300" />
                         <button onClick={async () =>{
                           await createTodo(newTask);
-                          setRefreshKey(prev => prev + 1); // trigger refresh
+                          setRefreshKey(prev => prev + 1);
                         }} className="flex items-center bg-sky-700 py-2 rounded-md px-3 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-plus h-5 w-5 mr-1" data-lov-id="src/components/AddTaskForm.tsx:47:8" data-lov-name="Plus" data-component-path="src/components/AddTaskForm.tsx" data-component-line="47" data-component-file="AddTaskForm.tsx" data-component-name="Plus" data-component-content="%7B%22className%22%3A%22h-5%20w-5%20mr-1%22%7D"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>Add Task</button>
                       </div>
                       <div className="shadow-xl border-1 border-gray-300 rounded-md ">

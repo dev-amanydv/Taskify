@@ -50,10 +50,8 @@ function Signup() {
             profilePic: result.user.photoURL,
         };
 
-        // Store user in local storage
         localStorage.setItem("taskify", JSON.stringify(user));
 
-        // Update AuthContext
         setAuthUser(user);
 
         toast.success("Logged in successfully!");
