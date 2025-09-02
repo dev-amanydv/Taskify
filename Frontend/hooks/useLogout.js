@@ -11,7 +11,7 @@ const useLogout =  () => {
         console.log("Clicked logout: ")
         setLoading(true);
         try {
-            const res = await fetch("http://localhost:3000/user/logout",{
+            const res = await fetch("https://taskify-6ybr.onrender.com/user/logout",{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"

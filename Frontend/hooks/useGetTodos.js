@@ -11,7 +11,7 @@ export const useGetTodos = () =>{
         setLoading(true);
         try {
             console.log("authUser:",authUser)
-            const response = await fetch("http://localhost:3000/user/todos",{
+            const response = await fetch("https://taskify-6ybr.onrender.com/user/todos",{
                 method: "GET",
                 credentials: "include",
                 headers: {
@@ -38,7 +38,7 @@ export const useCreateTodo = () =>{
         console.log("title recieved to createTodo: ", title);
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3000/user/todo`,{
+            const res = await fetch(`https://taskify-6ybr.onrender.com/user/todo`,{
                 method: "POST",
                 credentials: "include",
                 headers: {
@@ -70,7 +70,7 @@ export const useUpdateTodo = () =>{
         console.log("Id recieved to updateTodo: ", id);
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3000/user/todo/${id}`,{
+            const res = await fetch(`https://taskify-6ybr.onrender.com/user/todo/${id}`,{
                 method: "PUT",
                 credentials: "include",
                 headers: {
@@ -101,7 +101,7 @@ export const useDeleteTodo = () =>{
         console.log("Id recieved to updateTodo: ", id);
         setLoading(true);
         try {
-            const res = await fetch(`http://localhost:3000/user/todo/${id}`,{
+            const res = await fetch(`https://taskify-6ybr.onrender.com/user/todo/${id}`,{
                 method: "DELETE",
                 credentials: "include",
                 headers: {

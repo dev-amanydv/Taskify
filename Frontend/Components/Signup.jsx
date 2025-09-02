@@ -69,7 +69,7 @@ function Signup() {
         }
         const { displayName, email, photoURL } = result.user;
 
-        const res = await fetch("http://localhost:3000/user/google-login", {
+        const res = await fetch("https://taskify-6ybr.onrender.com/user/google-login", {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ fullName: displayName, email, profilePic: photoURL })
