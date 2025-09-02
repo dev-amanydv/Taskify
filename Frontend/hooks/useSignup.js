@@ -31,7 +31,6 @@ const useSignup = () => {
                 throw new Error(data.msg );
             }
 
-            // Store user session
             localStorage.setItem("taskify", JSON.stringify(data));
 
          setAuthUser(data);

@@ -143,7 +143,6 @@ export default function LandingHome() {
       </header>
 
       <main>
-        {/* Hero Section */}
         <section className="relative pt-32 pb-20 lg:pt-48 lg:pb-28">
           <div className="absolute inset-0 overflow-hidden">
              <div className="absolute top-0 left-0 w-96 h-96 bg-blue-200 rounded-full opacity-30 -translate-x-1/4 -translate-y-1/4 filter blur-3xl"></div>
@@ -173,7 +172,6 @@ export default function LandingHome() {
           </div>
         </section>
 
-        {/* Features Section */}
         <section id="features" className="py-20 bg-white fade-in-section">
           <div className="container mx-auto px-6">
             <div className="text-center mb-16">
@@ -213,7 +211,6 @@ export default function LandingHome() {
           </div>
         </section>
 
-        {/* Testimonials Section */}
         <section id="testimonials" className="py-20 bg-gray-50 fade-in-section">
             <div className="container mx-auto px-6">
                 <div className="text-center mb-12">
@@ -255,7 +252,6 @@ export default function LandingHome() {
             </div>
         </section>
 
-        {/* CTA Banner */}
         <section className="py-20 bg-blue-600 fade-in-section">
             <div className="container mx-auto px-6 text-center">
                 <h2 className="text-4xl font-bold text-white">Boost your productivity today</h2>
@@ -269,7 +265,6 @@ export default function LandingHome() {
         </section>
       </main>
 
-      {/* Footer */}
       <footer className="bg-gray-900 text-white">
           <div className="container mx-auto px-6 py-12">
               <div className="md:flex md:justify-between md:items-center">

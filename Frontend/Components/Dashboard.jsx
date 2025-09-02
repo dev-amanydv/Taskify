@@ -3,6 +3,8 @@ import { useAuthContext } from "../context/AuthContext";
 import Navbar from "./Navbar";
 import TaskList from "./Tasklist";
 import { useCreateTodo, useGetTodos } from "../hooks/useGetTodos";
+import { Clock, Calendar, AlertCircle, Plus, CheckCircle, BarChart2 } from 'lucide-react';
+
 
 function Dashboard() {
   const { loading: createTodoLoading, createTodo } = useCreateTodo();
@@ -30,81 +32,106 @@ function Dashboard() {
   const remainingTasks = totalTasks - completedTasks;
   const progressPercent = totalTasks > 0 ? (completedTasks / totalTasks) * 100 : 0;
 
-
   return (
-    <div>
+    <div className="bg-gray-50 min-h-screen">
       <Navbar />
-      <div className="p-3 w-full max-w-3xl mx-auto">
-        <div className=" mt-15 flex items-center gap-4 p-3">
-          <img src={authUser.profilePic} className="rounded-full h-40 " alt="" />
-          <div className="flex flex-col">
-            <span className="font-bold text-lg md:text-3xl font-[Outfit]">Welcome, {authUser.fullName}</span>
-            <span className="text-gray-700 md:text-lg text-md">Manage your tasks efficiently.</span>
+      <div className="p-4 w-full max-w-5xl mx-auto fade-in">
+\        <div className="relative mt-16 p-8 rounded-2xl shadow-lg overflow-hidden bg-gradient-to-r from-blue-500 to-purple-600 text-white">
+          <div className="absolute inset-0 bg-black opacity-20"></div>
+          <div className="relative flex items-center gap-6">
+            <img src={authUser.profilePic} className="rounded-full h-24 w-24 border-4 border-white shadow-md" alt="Profile" />
+            <div>
+              <h1 className="font-bold text-4xl font-[Outfit]">Welcome, {authUser.fullName}</h1>
+              <p className="text-lg opacity-90">Ready to conquer your tasks for the day?</p>
+            </div>
           </div>
         </div>
-        <div className="grid md:grid-cols-3 md:gap-4">
-          <div className="bg-white p-3 rounded-lg mt-3 pl-5">
-            <div className="flex items-center gap-1 text-lg font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-clock h-5 w-5 text-teal-600"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg> <div>Today's Tasks</div></div>
-            <div className="text-sm text-gray-700">Tasks due today</div>
-            <div className="font-bold text-4xl  pt-3">N/A</div>
+
+        <div className="grid md:grid-cols-3 gap-6 mt-8">
+          <div className="bg-white p-6 rounded-2xl shadow-md hover-lift transition-transform duration-300">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold text-gray-800">Today's Tasks</h3>
+              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-teal-100">
+                <Clock className="w-6 h-6 text-teal-600" />
+              </div>
+            </div>
+            <p className="text-sm text-gray-500">Tasks due today</p>
+            <div className="font-bold text-5xl text-gray-900 mt-3">N/A</div>
           </div>
-          <div className="bg-white p-3 rounded-lg mt-3 pl-5">
-            <div className="flex items-center gap-1 text-lg font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-calendar h-5 w-5 text-teal-600"><path d="M8 2v4"></path><path d="M16 2v4"></path><rect width="18" height="18" x="3" y="4" rx="2"></rect><path d="M3 10h18"></path></svg> <div>Upcoming</div></div>
-            <div className="text-sm text-gray-700">Future Tasks</div>
-            <div className="font-bold text-4xl pt-3 ">N/A</div>
+          <div className="bg-white p-6 rounded-2xl shadow-md hover-lift transition-transform duration-300">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold text-gray-800">Upcoming</h3>
+              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-blue-100">
+                <Calendar className="w-6 h-6 text-blue-600" />
+              </div>
+            </div>
+            <p className="text-sm text-gray-500">Tasks in the future</p>
+            <div className="font-bold text-5xl text-gray-900 mt-3">N/A</div>
           </div>
-          <div className="bg-white p-3 rounded-lg mt-3 pl-5">
-            <div className="flex items-center gap-1 text-lg font-semibold"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-circle-alert h-5 w-5  text-red-500"><circle cx="12" cy="12" r="10"></circle><line x1="12" x2="12" y1="8" y2="12"></line><line x1="12" x2="12.01" y1="16" y2="16"></line></svg> <div>Overdue</div></div>
-            <div className="text-sm text-gray-700">Tasks past their due date</div>
-            <div className="font-bold text-4xl  pt-3">N/A</div>
+          <div className="bg-white p-6 rounded-2xl shadow-md hover-lift transition-transform duration-300">
+            <div className="flex items-center justify-between">
+              <h3 className="text-lg font-semibold text-gray-800">Overdue</h3>
+              <div className="w-10 h-10 flex items-center justify-center rounded-full bg-red-100">
+                <AlertCircle className="w-6 h-6 text-red-600" />
+              </div>
+            </div>
+            <p className="text-sm text-gray-500">Tasks past their due date</p>
+            <div className="font-bold text-5xl text-gray-900 mt-3">N/A</div>
           </div>
         </div>
       </div>
-      <div className="p-3 max-w-3xl mx-auto w-full">
-        <div className="bg-[#eeeeee] p-2 md:flex justify-center rounded-lg text-white">
+      <div className="p-4 max-w-5xl mx-auto w-full">
+        <div className="bg-white p-2 flex justify-center rounded-full shadow-sm text-gray-700">
           {tabs.map((tab) => (
-            <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 cursor-pointer py-2 rounded-lg font-medium transition-colors duration-200 
-              ${activeTab === tab ? 'bg-white text-black shadow' : 'text-gray-500 hidden md:block hover:text-gray-500'}`}>{tab}</button>
+            <button key={tab} onClick={() => setActiveTab(tab)} className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 
+              ${activeTab === tab ? 'bg-blue-600 text-white shadow-md' : 'text-gray-500 hover:bg-gray-100'}`}>{tab}</button>
           ))}
         </div>
-        <div className="mt-3 bg-white rounded-lg  p-5  ">
+        <div className="mt-6 bg-white rounded-2xl shadow-lg p-6">
           {activeTab === 'All Tasks' && (
             <div>
-              <div className="flex flex-col">
-                <span className="text-2xl font-semibold">Task Management</span>
-                <span className="text-gray-500">Add, edit, and manage your tasks here</span>
+              <div className="flex flex-col mb-6">
+                <h2 className="text-3xl font-bold text-gray-900">Task Management</h2>
+                <p className="text-gray-500">Add, edit, and manage your tasks here.</p>
               </div>
-              <div className="flex items-center gap-10 justify-between">
-                <input onChange={(e) => { setNewTask(e.target.value) }} type="text" placeholder="Add a new task..." className="bg-gray-100 rounded-sm p-2 w-full my-5 border-1 border-gray-300" />
+              <div className="flex items-center gap-4 mb-6">
+                <input onChange={(e) => { setNewTask(e.target.value) }} type="text" placeholder="Add a new task..." className="bg-gray-100 rounded-lg p-4 w-full border-2 border-transparent focus:border-blue-500 focus:ring-0 transition" />
                 <button onClick={async () => {
                   await createTodo(newTask);
-                  setRefreshKey(prev => prev + 1); 
-                }} className="flex min-w-30 items-center bg-sky-700 py-2 rounded-md px-3 text-white"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="lucide lucide-plus h-5 w-5 mr-1"><path d="M5 12h14"></path><path d="M12 5v14"></path></svg>Add Task</button>
+                  setRefreshKey(prev => prev + 1);
+                }} className="flex items-center justify-center bg-gradient-to-r from-blue-500 to-purple-600 py-4 px-6 rounded-lg text-white font-semibold shadow-md hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+                  <Plus className="h-6 w-6 mr-2" />Add Task</button>
               </div>
-              <div className="shadow-xl border-1 border-gray-300 rounded-md ">
-                <div className="flex justify-between px-3 pt-3">
-                  <h2 className="font-medium">Task Progress</h2>
-                  <span className="text-gray-500">{completedTasks} of {totalTasks} tasks</span>
+              <div className="bg-gray-50 p-6 rounded-2xl border">
+                <div className="flex justify-between items-center mb-4">
+                  <h3 className="font-semibold text-lg text-gray-800">Task Progress</h3>
+                  <span className="text-gray-500 font-medium">{completedTasks} of {totalTasks} tasks</span>
                 </div>
-                <div className="px-3 pt-2">
-                  <div className="h-2 transition-all duration-500 ease-out rounded-full bg-teal-600" style={{ width: `${progressPercent}%` }}></div>
+                <div className="w-full bg-gray-200 rounded-full h-3 overflow-hidden">
+                  <div className="h-full rounded-full bg-gradient-to-r from-teal-400 to-blue-500 transition-width duration-500" style={{ width: `${progressPercent}%` }}></div>
                 </div>
-                <div className="flex justify-around my-3 p-3 ">
-                  <div className="flex rounded-lg py-9 px-14 flex-col h-10 p-8 bg-blue-100 justify-center items-center">
-                    <span className="text-2xl font-bold  ">{completedTasks}</span>
-                    <span className="text-gray-600">Due Today</span>
+                <div className="flex justify-around mt-6">
+                  <div className="flex flex-col items-center p-4 rounded-lg bg-blue-50 w-1/2 mx-2">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-blue-100 mb-2">
+                      <CheckCircle className="w-6 h-6 text-blue-600" />
+                    </div>
+                    <span className="text-3xl font-bold text-gray-900">{completedTasks}</span>
+                    <span className="text-gray-600">Completed</span>
                   </div>
-                  <div className="flex rounded-lg py-9 px-14 flex-col h-10 p-8 bg-blue-100 justify-center items-center">
-                    <span className="text-2xl font-bold  ">{remainingTasks}</span>
+                  <div className="flex flex-col items-center p-4 rounded-lg bg-purple-50 w-1/2 mx-2">
+                    <div className="w-12 h-12 flex items-center justify-center rounded-full bg-purple-100 mb-2">
+                      <BarChart2 className="w-6 h-6 text-purple-600" />
+                    </div>
+                    <span className="text-3xl font-bold text-gray-900">{remainingTasks}</span>
                     <span className="text-gray-600">Remaining</span>
                   </div>
                 </div>
               </div>
               <TaskList refreshKey={refreshKey} />
             </div>)}
-          {activeTab === 'Today' && (<div className="text-2xl text-center font-semibold">Coming Soon...</div>)}
-          {activeTab === 'Upcoming' && (<div className="text-2xl text-center font-semibold">Coming Soon...</div>)}
-          {activeTab === 'Overdue' && (<div className="text-2xl text-center font-semibold">Coming Soon...</div>)}
+          {activeTab === 'Today' && (<div className="text-2xl text-center font-semibold text-gray-500 p-16">Coming Soon...</div>)}
+          {activeTab === 'Upcoming' && (<div className="text-2xl text-center font-semibold text-gray-500 p-16">Coming Soon...</div>)}
+          {activeTab === 'Overdue' && (<div className="text-2xl text-center font-semibold text-gray-500 p-16">Coming Soon...</div>)}
         </div>
       </div>
     </div>

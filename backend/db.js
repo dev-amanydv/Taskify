@@ -10,7 +10,6 @@ mongoose
     console.error("Error connecting to MongoDB:", err.message);
   });
 
-// Admin schema
 const adminSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -38,7 +37,6 @@ const adminSchema = new mongoose.Schema({
   }
 },{timestamps: true});
 
-// User schema
 const userSchema = new mongoose.Schema({
   fullName: {
     type: String,
@@ -66,7 +64,6 @@ const userSchema = new mongoose.Schema({
   }
 }, {timestamps:true});
 
-// Todo schema
 const todoSchema = new mongoose.Schema({
   title: String,
   isCompleted: {
@@ -77,7 +74,6 @@ const todoSchema = new mongoose.Schema({
 },{timestamps: true});
 
 
-// Models
 const Admin = mongoose.model("Admin", adminSchema);
 const User = mongoose.model("User", userSchema);
 const Todos = mongoose.model("Todos", todoSchema);

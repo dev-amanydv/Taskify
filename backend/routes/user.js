@@ -100,15 +100,11 @@ router.post('/google-login', async (req, res) => {
         let user = await User.findOne({ email });
 
         if (!user) {
-            // If user doesn't exist, create a new one.
-            // Note: Your User schema requires a password and gender, which Google Sign-In doesn't provide.
-            // For this fix, we'll use placeholder values. A more robust solution
-            // would be to adjust your schema to better support social logins.
             const newUser = new User({
                 fullName,
                 email,
-                password: "GOOGLE_USER_NO_PASSWORD", // Placeholder
-                gender: "male", // Default value
+                password: "GOOGLE_USER_NO_PASSWORD", 
+                gender: "male", 
                 profilePic
             });
             await newUser.save();

@@ -8,15 +8,15 @@ import userRouter from './routes/user.js'
 
 app.use(cookieParser());
 app.use(cors({
-    origin: "http://localhost:5173", // Allow frontend domain
-    credentials: true, // Allow cookies & authentication headers
+    origin: "http://localhost:5173",
+    credentials: true,
 }))
 app.use(express.json())
 app.use(bodyParser.json());
 app.use("/admin", adminRouter)
 app.use("/user", userRouter);
 app.get("/test-cookie", (req, res) => {
-    console.log(req.cookies);  // Debugging
+    console.log(req.cookies);
     res.json({ cookies: req.cookies });
 });
 
