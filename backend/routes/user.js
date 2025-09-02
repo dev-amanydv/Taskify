@@ -93,6 +93,44 @@ router.post('/login', async (req,res) => {
         
     }
 })
+router.post('/google-login', async (req, res) => {
+    try {
+        const { email, fullName, profilePic } = req.body;
+
+        let user = await User.findOne({ email });
+
+        if (!user) {
+            // If user doesn't exist, create a new one.
+            // Note: Your User schema requires a password and gender, which Google Sign-In doesn't provide.
+            // For this fix, we'll use placeholder values. A more robust solution
+            // would be to adjust your schema to better support social logins.
+            const newUser = new User({
+                fullName,
+                email,
+                password: "GOOGLE_USER_NO_PASSWORD", // Placeholder
+                gender: "male", // Default value
+                profilePic
+            });
+            await newUser.save();
+            user = newUser;
+        }
+
+        const token = generateToken(user._id);
+        res.status(200).json({
+            jwt: token,
+            id: user._id,
+            fullName: user.fullName,
+            email: user.email,
+            profilePic: user.profilePic
+        });
+
+    } catch (error) {
+        console.log("Error in Google login route: ", error);
+        res.status(500).json({
+            msg: "Internal Server Error"
+        });
+    }
+});
 router.post('/logout', async (req,res) => {
     try {
         res.cookie("jwt", "", {
