@@ -8,7 +8,7 @@ import userRouter from './routes/user.js'
 
 app.use(cookieParser());
 app.use(cors({
-    origin: "http://localhost:5173",
+    origin: "https://taskify-wine.vercel.app",
     credentials: true,
 }))
 app.use(express.json())
