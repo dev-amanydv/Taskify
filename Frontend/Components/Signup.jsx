@@ -73,7 +73,6 @@ const handleFacebookLogin = async () => {
 
   return (
     <div className="">
-      <Navbar />
       <div className="flex justify-center mt-20">
         <div className="bg-white rounded-2xl">
           <div className="flex flex-col rounded-lg bg-blue-300/10 backdrop-blur-2xl w-80 p-5">
@@ -157,7 +156,6 @@ const handleFacebookLogin = async () => {
           </div>
         </div>
       </div>
-      <Footer />
     </div>
   );
 }

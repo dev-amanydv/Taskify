@@ -38,8 +38,8 @@ function Dashboard() {
         <div className=" mt-15 flex items-center gap-4 p-3">
           <img src={authUser.profilePic} className="rounded-full h-40 " alt="" />
           <div className="flex flex-col">
-            <span className="font-bold text-3xl font-[Outfit]">Welcome, {authUser.fullName}</span>
-            <span className="text-gray-700 text-lg">Manage your tasks efficiently.</span>
+            <span className="font-bold text-lg md:text-3xl font-[Outfit]">Welcome, {authUser.fullName}</span>
+            <span className="text-gray-700 md:text-lg text-md">Manage your tasks efficiently.</span>
           </div>
         </div>
         <div className="grid md:grid-cols-3 md:gap-4">
@@ -61,10 +61,10 @@ function Dashboard() {
         </div>
       </div>
       <div className="p-3 max-w-3xl mx-auto w-full">
-        <div className="bg-[#eeeeee] p-2 rounded-lg text-white">
+        <div className="bg-[#eeeeee] p-2 md:flex justify-center rounded-lg text-white">
           {tabs.map((tab) => (
             <button key={tab} onClick={() => setActiveTab(tab)} className={`px-4 cursor-pointer py-2 rounded-lg font-medium transition-colors duration-200 
-              ${activeTab === tab ? 'bg-white text-black shadow' : 'text-gray-500 hover:text-gray-500'}`}>{tab}</button>
+              ${activeTab === tab ? 'bg-white text-black shadow' : 'text-gray-500 hidden md:block hover:text-gray-500'}`}>{tab}</button>
           ))}
         </div>
         <div className="mt-3 bg-white rounded-lg  p-5  ">
@@ -102,9 +102,9 @@ function Dashboard() {
               </div>
               <TaskList refreshKey={refreshKey} />
             </div>)}
-          {activeTab === 'Today' && (<div>Today</div>)}
-          {activeTab === 'Upcoming' && (<div>Upcoming</div>)}
-          {activeTab === 'Overdue' && (<div>Overdue</div>)}
+          {activeTab === 'Today' && (<div className="text-2xl text-center font-semibold">Coming Soon...</div>)}
+          {activeTab === 'Upcoming' && (<div className="text-2xl text-center font-semibold">Coming Soon...</div>)}
+          {activeTab === 'Overdue' && (<div className="text-2xl text-center font-semibold">Coming Soon...</div>)}
         </div>
       </div>
     </div>

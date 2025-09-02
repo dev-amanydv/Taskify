@@ -5,7 +5,7 @@ import { NavLink } from "react-router-dom";
 export default function Hero() {
   
   return (
-    <div className="hero">
+    <div className="hero ">
         <div className="intro">
             <div className="intro-content">
               <img src="../src/assets/Set-Reminders-unscreen.gif" alt="" />

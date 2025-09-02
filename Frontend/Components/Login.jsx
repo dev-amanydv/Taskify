@@ -4,6 +4,7 @@ import Navbar from "./Navbar";
 import Footer from "./Footer";
 import useLogin from "../hooks/useLogin";
 import { signInWithPopup } from "firebase/auth";
+import { auth, provider} from "../src/firebase/firebaseConfig";
 
 function Login() {
   const [email, setEmail ] = useState("");
@@ -18,7 +19,7 @@ function Login() {
         const result = await signInWithPopup(auth, provider);
 
         if (!result || !result.user) {
-         throw new Error("Google sign-in failed. No user data received.");
+            throw new Error("Google sign-in failed. No user data received.");
         }
 
         const user = {
@@ -42,7 +43,6 @@ function Login() {
 
   return (
     <div>
-      <Navbar />
       <div className="flex justify-center mt-20 ">
         <div className="bg-white rounded-2xl ">
           <div className="flex flex-col rounded-lg bg-blue-300/10 backdrop-blur-2xl w-80 p-5">
