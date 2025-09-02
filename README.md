@@ -8,7 +8,7 @@ Taskify is a modern, elegant, and efficient task management application designed
 
 Here’s a quick look at Taskify’s landing page:
 
-![Taskify Landing Page](frontend/src/assets/landingpage.png)
+![Taskify Landing Page](/Frontend/src/assets/landingpage.png)
 
 
 ## **🚀 About The Project**
@@ -63,28 +63,42 @@ Make sure you have the following installed on your machine:
 ### **Installation**
 
 1. **Clone the repository:**  
-   git clone \[https://github.com/your-username/taskify.git\](https://github.com/your-username/taskify.git)  
-   cd taskify
+    ```
+    git clone https://github.com/your-username/taskify.git
+    cd taskify
+    ```
 
 2. **Set up the Backend:**  
    * Navigate to the backend directory:  
+    ```
      cd backend
+    ```
 
    * Install NPM packages:  
+   ```
      npm install
+   ```
 
    * Start the backend server:  
+    ```
      node index.js
+    ```
 
 3. **Set up the Frontend:**  
    * Open a new terminal and navigate to the frontend directory:  
+   ```
      cd ../Frontend
+    ```
 
    * Install NPM packages:  
+   ```
      npm install
+   ```
 
    * Start the frontend development server:  
+   ```
      npm run dev
+   ```
 
 The application should now be running, with the frontend available at http://localhost:5173 and the backend at http://localhost:3000.
 
